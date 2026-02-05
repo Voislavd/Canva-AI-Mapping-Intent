@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import PageContainer from './PageContainer'
 import FieldPopover from './FieldPopover'
 import './canvas-preview.css'
@@ -102,6 +102,20 @@ export default function TemplatePreview({
     elementType: 'text',
     position: { x: 0, y: 0 }
   })
+  
+  // Refs for scrolling to pages
+  const pageRefs = useRef([])
+  const scrollContainerRef = useRef(null)
+
+  // Scroll to selected page when it changes
+  useEffect(() => {
+    if (template && pageRefs.current[selectedPageIndex]) {
+      pageRefs.current[selectedPageIndex].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      })
+    }
+  }, [selectedPageIndex, template])
 
   if (!template) return null
 
@@ -153,29 +167,34 @@ export default function TemplatePreview({
 
   return (
     <div className="template-preview">
-      <div className="pages-scroll-container">
+      <div className="pages-scroll-container" ref={scrollContainerRef}>
         {template.pages.map((page, index) => (
-          <PageContainer
-            key={page.id}
-            page={page}
-            pageNumber={index + 1}
-            pageIndex={index}
-            mappings={mappings}
-            schema={schema}
-            isSelected={selectedPageIndex === index}
-            isClickToMapMode={isClickToMapMode}
-            onElementClick={handleElementClick}
-            onElementUnmap={onFieldUnmap}
-            onPageSelect={onPageSelect}
-            isMarketerMode={isMarketerMode}
-            highlightedElementId={highlightedElementId}
-            isApplied={isApplied}
-            isDraggingField={isDraggingField}
-            dragOverElement={dragOverElement}
-            onElementDragOver={onElementDragOver}
-            onElementDragLeave={onElementDragLeave}
-            onElementDrop={onElementDrop}
-          />
+          <div 
+            key={page.id} 
+            ref={el => pageRefs.current[index] = el}
+            className="page-scroll-anchor"
+          >
+            <PageContainer
+              page={page}
+              pageNumber={index + 1}
+              pageIndex={index}
+              mappings={mappings}
+              schema={schema}
+              isSelected={selectedPageIndex === index}
+              isClickToMapMode={isClickToMapMode}
+              onElementClick={handleElementClick}
+              onElementUnmap={onFieldUnmap}
+              onPageSelect={onPageSelect}
+              isMarketerMode={isMarketerMode}
+              highlightedElementId={highlightedElementId}
+              isApplied={isApplied}
+              isDraggingField={isDraggingField}
+              dragOverElement={dragOverElement}
+              onElementDragOver={onElementDragOver}
+              onElementDragLeave={onElementDragLeave}
+              onElementDrop={onElementDrop}
+            />
+          </div>
         ))}
       </div>
 
