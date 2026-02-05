@@ -68,7 +68,8 @@ export default function App() {
 
   // Mapping handlers
   const handleFieldMap = (elementId, fieldId) => {
-    setMappings({ ...mappings, [elementId]: fieldId })
+    // Use functional setState to handle multiple rapid updates correctly
+    setMappings(prev => ({ ...prev, [elementId]: fieldId }))
   }
 
   const handleFieldUnmap = (elementId) => {

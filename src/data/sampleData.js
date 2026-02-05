@@ -97,15 +97,22 @@ export const TEMPLATES = [
           { id: 'el-1', type: 'text', label: 'ABC Company', x: 740, y: 178, width: 200, mappedField: 'company-name' },
           { id: 'el-2', type: 'text', label: 'For xx employees', x: 740, y: 663, width: 200, mappedField: 'employee-count' },
           { id: 'el-12', type: 'image', label: 'Hero Image', x: 740, y: 400, width: 300, height: 200, mappedField: 'hero-photo' },
+          { id: 'el-13', type: 'image', label: 'Company Logo', x: 740, y: 100, width: 150, height: 80, mappedField: 'company-logo' },
         ]
       },
       {
         id: 'page-2',
         title: 'Overview',
         elements: [
-          { id: 'el-3', type: 'text', label: 'Benefits Summary', x: 100, y: 100, width: 300, mappedField: null },
           { id: 'el-10', type: 'text', label: 'Department Name', x: 100, y: 200, width: 200, mappedField: 'department' },
           { id: 'el-11', type: 'text', label: 'Start Date', x: 100, y: 300, width: 150, mappedField: 'start-date' },
+          { id: 'el-14', type: 'text', label: 'Job Type', x: 100, y: 400, width: 150, mappedField: 'job-type' },
+          { id: 'el-15', type: 'text', label: 'Job Title', x: 100, y: 450, width: 200, mappedField: 'job-title' },
+          { id: 'el-16', type: 'text', label: 'Manager Name', x: 100, y: 500, width: 200, mappedField: 'manager-name' },
+          { id: 'el-17', type: 'text', label: 'Office Location', x: 100, y: 550, width: 200, mappedField: 'office-location' },
+          { id: 'el-18', type: 'text', label: 'Employee Type', x: 300, y: 200, width: 150, mappedField: 'employee-type' },
+          { id: 'el-19', type: 'text', label: 'Employee ID', x: 300, y: 250, width: 150, mappedField: 'employee-id' },
+          { id: 'el-20', type: 'image', label: 'Team Photo', x: 400, y: 400, width: 250, height: 180, mappedField: 'team-photo' },
         ]
       },
       {
