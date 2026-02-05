@@ -1,5 +1,6 @@
 import './AIAssistMappingCard.css'
 import aiMappingIcon from '../../../assets/icons/Icon.png'
+import iconDone from '../../../assets/icons/icon-done.png'
 
 export default function AIAssistMappingCard({ state, onMapWithAI, onCancel }) {
   // Render based on state
@@ -24,13 +25,10 @@ export default function AIAssistMappingCard({ state, onMapWithAI, onCancel }) {
         return (
           <>
             <div className="ai-card-header">
-              <span className="ai-card-icon success">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="10" cy="10" r="8" fill="#00C4CC" fillOpacity="0.15"/>
-                  <path d="M6 10L9 13L14 7" stroke="#00C4CC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              <span className="ai-card-icon">
+                <img src={iconDone} alt="" className="ai-done-icon" />
               </span>
-              <span className="ai-card-title success">Auto-mapping complete!</span>
+              <span className="ai-card-title gradient">Auto-mapping complete!</span>
             </div>
           </>
         )

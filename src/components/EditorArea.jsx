@@ -18,7 +18,8 @@ export default function EditorArea({
   isMarketerMode = false,
   highlightedElementId,
   isApplied = false,
-  isDraggingField = false
+  isDraggingField = false,
+  onFieldDragEnd
 }) {
   const [dragOverElement, setDragOverElement] = useState(null)
 
@@ -35,10 +36,12 @@ export default function EditorArea({
     if (fieldData && fieldData.fieldId) {
       onFieldMap(elementId, fieldData.fieldId)
     }
+    // Also reset drag state when drop happens
+    onFieldDragEnd?.()
   }
 
   return (
-    <main className={`editor-area ${isPanelOpen ? '' : 'panel-closed'} ${isDraggingField ? 'is-drop-target' : ''}`}>
+    <main className={`editor-area ${isPanelOpen ? '' : 'panel-closed'}`}>
       {!showTemplatePreview && <Toolbar />}
       <div className="canvas-container">
         {showTemplatePreview ? (

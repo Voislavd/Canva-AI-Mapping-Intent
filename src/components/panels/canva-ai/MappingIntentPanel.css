@@ -54,12 +54,15 @@
 }
 
 .mapping-section-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0 0 12px 0;
+  color: #0E1318;
+  font-family: 'Canva Sans', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+  text-transform: none;
+  letter-spacing: normal;
+  margin: 0 0 8px 0;
 }
 
 /* Fields Section */
@@ -73,9 +76,6 @@
   padding: 16px;
 }
 
-.mapping-intent-fields .section-label {
-  display: none;
-}
 
 /* Footer */
 .mapping-intent-footer {

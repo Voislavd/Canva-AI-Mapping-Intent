@@ -676,14 +676,15 @@
   position: absolute;
   top: -28px;
   left: 0;
-  display: flex;
+  display: inline-flex;
+  padding: 2px 8px;
+  justify-content: center;
   align-items: center;
-  gap: 6px;
-  padding: 4px 8px;
-  background: var(--purple-accent);
-  color: white;
+  gap: 8px;
   border-radius: 4px;
-  font-size: 11px;
+  background: #A370FC;
+  color: white;
+  font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
   z-index: 10;
@@ -691,26 +692,38 @@
 }
 
 .badge-icon-mini {
-  font-size: 10px;
-  opacity: 0.8;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon-mini img {
+  width: 16px;
+  height: 16px;
 }
 
 .badge-remove-mini {
-  font-size: 12px;
-  opacity: 0.8;
-  margin-left: 2px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
-  color: white;
   cursor: pointer;
-  padding: 0 2px;
-  border-radius: 2px;
+  padding: 0;
   transition: all 0.1s ease;
 }
 
+.badge-remove-mini img {
+  width: 16px;
+  height: 16px;
+}
+
 .badge-remove-mini:hover {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.2);
+  opacity: 0.8;
 }
 
 /* Hide mapping badges when applied */
@@ -768,12 +781,6 @@
   box-shadow: 0 4px 12px rgba(139, 61, 255, 0.3);
 }
 
-/* Editor drop target mode */
-.editor-area.is-drop-target .canvas-container {
-  outline: 2px dashed rgba(139, 61, 255, 0.3);
-  outline-offset: -4px;
-  border-radius: 8px;
-}
 
 /* ==================== FIELD POPOVER ==================== */
 

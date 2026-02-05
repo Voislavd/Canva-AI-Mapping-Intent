@@ -819,6 +819,16 @@
   gap: 8px;
 }
 
+.fields-schema-section .section-label {
+  color: #0E1318;
+  font-family: 'Canva Sans', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+  margin: 0 0 0 0;
+}
+
 .schema-source-card {
   display: flex;
   width: 328px;

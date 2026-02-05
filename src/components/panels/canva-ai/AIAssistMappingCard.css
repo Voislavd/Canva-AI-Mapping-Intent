@@ -15,9 +15,9 @@
   height: 20px;
 }
 
-.ai-assist-mapping-card.complete {
-  background: rgba(0, 196, 204, 0.08);
-  border-color: rgba(0, 196, 204, 0.2);
+.ai-done-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .ai-card-header {
@@ -47,11 +47,6 @@
   }
 }
 
-.ai-card-icon.success svg {
-  width: 24px;
-  height: 24px;
-}
-
 .ai-card-title {
   font-size: 14px;
   font-weight: 500;
@@ -59,10 +54,6 @@
 
 .ai-card-title.gradient {
   color: #612DAE;
-}
-
-.ai-card-title.success {
-  color: #00A5AB;
 }
 
 .ai-card-btn {

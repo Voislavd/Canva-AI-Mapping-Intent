@@ -1,5 +1,7 @@
 import MappedBadge from './MappedBadge'
 import './canvas-preview.css'
+import iconDatabaseSmall from '../../assets/icons/icon-database-small.png'
+import iconDisconnect from '../../assets/icons/icon-disconnect.png'
 
 export default function PageContainer({
   page,
@@ -95,13 +97,15 @@ export default function PageContainer({
         {!isMarketerMode && isMapped && !isApplied && (
           <div className="element-mapping-badge">
             {getFieldLabel(mappings[element.id])}
-            <span className="badge-icon-mini">📋</span>
+            <span className="badge-icon-mini">
+              <img src={iconDatabaseSmall} alt="" />
+            </span>
             <button
               className="badge-remove-mini"
               onClick={(e) => handleUnmap(element.id, e)}
               title="Unmap field"
             >
-              −
+              <img src={iconDisconnect} alt="" />
             </button>
           </div>
         )}

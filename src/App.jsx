@@ -167,6 +167,7 @@ export default function App() {
         highlightedElementId={highlightedElementId}
         isApplied={isApplied}
         isDraggingField={isDraggingField}
+        onFieldDragEnd={() => setIsDraggingField(false)}
       />
     </div>
   )

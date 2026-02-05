@@ -866,19 +866,22 @@
 
 /* Section Labels */
 .section-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
+  color: #0E1318;
+  font-family: 'Canva Sans', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
   margin: 0 0 8px 0;
   display: block;
 }
 
 .mapping-tools .section-label {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .mapped-fields-section .section-label {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 /* Client Section */
