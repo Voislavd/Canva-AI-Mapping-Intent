@@ -101,6 +101,11 @@ export default function MappingIntentPanel({
           onBack={handleSubViewBack}
           onFieldDragStart={onFieldDragStart}
           onFieldDragEnd={onFieldDragEnd}
+          onDisconnect={(item, mappingInfo) => {
+            if (mappingInfo?.elementId) {
+              onFieldUnmap?.(mappingInfo.elementId)
+            }
+          }}
         />
       </div>
     )

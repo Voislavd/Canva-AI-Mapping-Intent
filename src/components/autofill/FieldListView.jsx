@@ -4,6 +4,8 @@ import textFieldIcon from '../../assets/icons/text-field-icon.png'
 import mediaIcon from '../../assets/icons/media-icon.png'
 import tableIcon from '../../assets/icons/table-icon.png'
 import searchIcon from '../../assets/icons/search-icon.png'
+import iconDisconnect from '../../assets/icons/icon-disconnect-dark.png'
+import iconDrag from '../../assets/icons/Icon-drag.png'
 
 export default function FieldListView({ 
   category, // 'fields', 'media', or 'tables'
@@ -13,7 +15,8 @@ export default function FieldListView({
   onBack,
   onFieldClick,
   onFieldDragStart,
-  onFieldDragEnd
+  onFieldDragEnd,
+  onDisconnect
 }) {
   const [searchQuery, setSearchQuery] = useState('')
   const [draggingItem, setDraggingItem] = useState(null)
@@ -152,15 +155,18 @@ export default function FieldListView({
           <span className="field-list-label">{item.label}</span>
           <span className="field-list-menu">
             {isMapped ? (
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 8C4 8 6 11 8 11C10 11 12 5 12 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <button 
+                className="disconnect-btn"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  onDisconnect?.(item, mappingInfo)
+                }}
+                title="Disconnect mapping"
+              >
+                <img src={iconDisconnect} alt="Disconnect" className="disconnect-icon" />
+              </button>
             ) : (
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="8" cy="3" r="1.5" fill="currentColor"/>
-                <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
-                <circle cx="8" cy="13" r="1.5" fill="currentColor"/>
-              </svg>
+              <img src={iconDrag} alt="Drag" className="drag-icon" />
             )}
           </span>
         </div>
