@@ -1,0 +1,55 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 20px;
+  margin-bottom: 16px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+  width: fit-content;
+  align-self: center;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+}
+
+.toolbar-group:not(:last-child) {
+  border-right: 1px solid #e5e5e5;
+  padding-right: 14px;
+  margin-right: 4px;
+}
+
+/* Filled shape - same as sidebar icons */
+.toolbar-item {
+  height: 24px;
+  background: var(--icon-inactive);
+  border-radius: 6px;
+}
+
+.toolbar-item.circle {
+  width: 24px;
+  border-radius: 50%;
+}
+
+.toolbar-item.pill {
+  width: 40px;
+  border-radius: 6px;
+}
+
+.toolbar-item.pill-long {
+  width: 56px;
+  border-radius: 6px;
+}
+
+/* Active state - white filled with shadow */
+.toolbar-item.active {
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+

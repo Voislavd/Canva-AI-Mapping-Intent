@@ -1,0 +1,14 @@
+<svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="canvaAiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00C4CC"/>
+      <stop offset="50%" stop-color="#7D2AE8"/>
+      <stop offset="100%" stop-color="#8B3DFF"/>
+    </linearGradient>
+  </defs>
+  <path d="M14 2C7.373 2 2 7.373 2 14C2 20.627 7.373 26 14 26C20.627 26 26 20.627 26 14C26 7.373 20.627 2 14 2Z" stroke="url(#canvaAiGradient)" stroke-width="2.5" fill="none"/>
+  <path d="M17.5 10.5C17.5 10.5 16 12 14 12C12 12 10.5 10.5 10.5 10.5" stroke="url(#canvaAiGradient)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="10" cy="14" r="1.5" fill="url(#canvaAiGradient)"/>
+  <circle cx="18" cy="14" r="1.5" fill="url(#canvaAiGradient)"/>
+  <path d="M10.5 17.5C10.5 17.5 12 19 14 19C16 19 17.5 17.5 17.5 17.5" stroke="url(#canvaAiGradient)" stroke-width="2" stroke-linecap="round"/>
+</svg>

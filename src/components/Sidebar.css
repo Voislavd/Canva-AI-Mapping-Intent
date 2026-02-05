@@ -1,0 +1,94 @@
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--header-height));
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  z-index: 90;
+  gap: 12px;
+}
+
+/* Canva AI Icon - Special gradient styling */
+.canva-ai-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: #f0f1f5;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  position: relative;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.canva-ai-icon:hover {
+  background: #e8e9ed;
+}
+
+.canva-ai-icon.active {
+  background: white;
+  box-shadow: 
+    0px 0px 0px 0.5px rgba(64, 87, 109, 0.07),
+    0px 2px 4px 0px rgba(24, 44, 89, 0.14),
+    0px 6px 12px 0px rgba(24, 44, 89, 0.07);
+}
+
+.canva-ai-icon-img {
+  width: 35px;
+  height: 35px;
+}
+
+/* White rounded button background */
+.sidebar-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-icon:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Gray shape inside (the icon abstraction) */
+.sidebar-icon::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: var(--icon-inactive);
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.sidebar-icon:hover::before {
+  background: var(--icon-hover);
+}
+
+/* Active state - purple icon */
+.sidebar-icon.active::before {
+  background: var(--purple-accent);
+}
+
+.sidebar-spacer {
+  flex: 1;
+}
+
+
+

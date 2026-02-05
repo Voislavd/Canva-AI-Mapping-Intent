@@ -1,0 +1,94 @@
+.ai-assist-mapping-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(3, 165, 171, 0.08) 0%, rgba(139, 61, 255, 0.08) 100%);
+  border: 1px solid rgba(3, 165, 171, 0.15);
+  border-radius: 12px;
+}
+
+.ai-assist-mapping-card.complete {
+  background: rgba(0, 196, 204, 0.08);
+  border-color: rgba(0, 196, 204, 0.2);
+}
+
+.ai-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ai-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.ai-card-icon.spinning {
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ai-card-icon.success svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ai-card-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ai-card-title.gradient {
+  background: linear-gradient(135deg, #03A5AB 0%, #8B3DFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ai-card-title.success {
+  color: #00A5AB;
+}
+
+.ai-card-btn {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: none;
+}
+
+.ai-card-btn.primary {
+  background: white;
+  color: var(--text-primary);
+  border: 1px solid rgba(57, 76, 96, 0.15);
+}
+
+.ai-card-btn.primary:hover {
+  background: rgba(57, 76, 96, 0.04);
+  border-color: rgba(57, 76, 96, 0.25);
+}
+
+.ai-card-btn.secondary {
+  background: white;
+  color: var(--text-secondary);
+  border: 1px solid rgba(57, 76, 96, 0.15);
+}
+
+.ai-card-btn.secondary:hover {
+  background: rgba(57, 76, 96, 0.04);
+}

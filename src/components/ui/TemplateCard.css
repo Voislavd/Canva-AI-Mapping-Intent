@@ -1,0 +1,125 @@
+.template-card {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.template-card:hover .template-thumb {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.template-card.selected {
+  box-shadow: 0 0 0 2px var(--purple-accent, #7c3aed);
+}
+
+.template-thumb {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mapped-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--purple-accent);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+.template-thumb-image {
+  max-width: 85%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.template-carousel-arrow {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #333;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.template-card:hover .template-carousel-arrow {
+  opacity: 1;
+}
+
+.template-carousel-arrow:hover {
+  background: #fff;
+}
+
+.template-label {
+  padding: 12px 0 8px;
+  background: #ffffff;
+}
+
+.template-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.template-type {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Placeholder for templates without thumbnails */
+.template-thumb-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+}
+
+.template-thumb-placeholder .placeholder-icon {
+  font-size: 32px;
+  opacity: 0.6;
+}
+
+.template-thumb-placeholder .placeholder-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.3;
+}
+
+/* Grid layout for template cards */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
