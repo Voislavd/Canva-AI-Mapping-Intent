@@ -75,54 +75,61 @@ export default function FieldListView({
     <div className="field-list-view">
       {/* Header */}
       <div className="field-list-header">
-        <button className="back-btn" onClick={onBack}>←</button>
+        <button className="back-btn" onClick={onBack}>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
         <h3 className="field-list-title">{getCategoryTitle()}</h3>
         <span className="field-list-count">{items.length} items</span>
       </div>
 
-      {/* Search */}
-      <div className="field-list-search">
-        <span className="search-icon">🔍</span>
-        <input
-          type="text"
-          placeholder={`Search ${category}...`}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </div>
+      {/* Body */}
+      <div className="field-list-body">
+        {/* Search */}
+        <div className="field-list-search">
+          <span className="search-icon">🔍</span>
+          <input
+            type="text"
+            placeholder={`Search ${category}...`}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
 
-      {/* List */}
-      <div className="field-list-items">
-        {filteredItems.length === 0 ? (
-          <div className="field-list-empty">No {category} found</div>
-        ) : (
-          filteredItems.map(item => {
-            const mappingInfo = getMappingInfo(item.id)
-            
-            return (
-              <div 
-                key={item.id} 
-                className={`field-list-item ${mappingInfo ? 'is-mapped' : ''}`}
-                onClick={() => onFieldClick?.(item)}
-              >
-                <span className="field-list-icon">{getTypeIcon(item.fieldType)}</span>
-                <div className="field-list-content">
-                  <span className="field-list-label">{item.label}</span>
-                  {item.sampleValue && (
-                    <span className="field-list-sample">{item.sampleValue}</span>
+        {/* List */}
+        <div className="field-list-items">
+          {filteredItems.length === 0 ? (
+            <div className="field-list-empty">No {category} found</div>
+          ) : (
+            filteredItems.map(item => {
+              const mappingInfo = getMappingInfo(item.id)
+              
+              return (
+                <div 
+                  key={item.id} 
+                  className={`field-list-item ${mappingInfo ? 'is-mapped' : ''}`}
+                  onClick={() => onFieldClick?.(item)}
+                >
+                  <span className="field-list-icon">{getTypeIcon(item.fieldType)}</span>
+                  <div className="field-list-info">
+                    <span className="field-list-label">{item.label}</span>
+                    {item.sampleValue && (
+                      <span className="field-list-sample">{item.sampleValue}</span>
+                    )}
+                  </div>
+                  {mappingInfo ? (
+                    <span className="field-list-mapping">
+                      Page {mappingInfo.pageNumber}
+                    </span>
+                  ) : (
+                    <span className="field-list-unmapped">Unmapped</span>
                   )}
                 </div>
-                {mappingInfo ? (
-                  <span className="field-list-mapping">
-                    Page {mappingInfo.pageNumber}
-                  </span>
-                ) : (
-                  <span className="field-list-unmapped">Unmapped</span>
-                )}
-              </div>
-            )
-          })
-        )}
+              )
+            })
+          )}
+        </div>
       </div>
     </div>
   )

@@ -84,14 +84,19 @@
 }
 
 .save-mapping-btn {
-  width: 100%;
-  padding: 12px 24px;
-  background: rgba(139, 61, 255, 0.15);
-  color: rgba(139, 61, 255, 0.5);
+  display: flex;
+  width: 328px;
+  height: 40px;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
   border: none;
   border-radius: 8px;
+  background: #F2F3F5;
+  color: #878D92;
+  font-family: 'Canva Sans', sans-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: not-allowed;
   transition: all 0.15s ease;
 }

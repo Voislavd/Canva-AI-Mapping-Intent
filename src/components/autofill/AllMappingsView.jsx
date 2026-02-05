@@ -67,7 +67,11 @@ export default function AllMappingsView({
     <div className="all-mappings-view">
       {/* Header */}
       <div className="all-mappings-header">
-        <button className="back-btn" onClick={onBack}>←</button>
+        <button className="back-btn" onClick={onBack}>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
         <h3 className="all-mappings-title">All Mappings</h3>
         <span className="all-mappings-count">{totalMappings} total</span>
       </div>

@@ -56,27 +56,32 @@
 }
 
 .back-btn {
-  width: 32px;
-  height: 32px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  border-radius: var(--radius-sm);
-  font-size: 18px;
-  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
   transition: background 0.15s ease;
 }
 
 .back-btn:hover {
-  background: var(--surface-bg);
+  background: rgba(57, 76, 96, 0.08);
+}
+
+.back-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 .panel-nav-title {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--text-primary);
   margin: 0;
 }
