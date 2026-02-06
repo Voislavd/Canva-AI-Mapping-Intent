@@ -11,6 +11,10 @@ export default function CanvaAIPanel({
   onClose, 
   onMappingStart, 
   onMappingEnd,
+  onApplyStart,
+  onApplyComplete,
+  onApplyEnd,
+  isApplied = false,
   mappings = {},
   onFieldMap,
   onFieldUnmap,
@@ -105,11 +109,23 @@ export default function CanvaAIPanel({
     }
   }
 
+  // Designing state
+  const [isDesigning, setIsDesigning] = useState(false)
+  const [designStep, setDesignStep] = useState(0)
+
+  const designSteps = [
+    'Applying data mappings',
+    'Replacing text fields',
+    'Inserting media',
+    'Populating tables',
+    'Finalizing layout'
+  ]
+
   // Handle save mapping
   const handleSaveMapping = () => {
-    // Notify parent to hide template preview
-    if (onMappingEnd) {
-      onMappingEnd()
+    // Start apply mode - keeps template visible but hides mapping badges
+    if (onApplyStart) {
+      onApplyStart()
     }
     
     // Add success message to conversation
@@ -118,16 +134,37 @@ export default function CanvaAIPanel({
       text: "Great! I've saved the mapping. Now generating your Employee Benefits Guide..."
     }])
     
-    // Return to chat view
+    // Return to chat view and start designing animation
     setView('chat')
+    setIsDesigning(true)
+    setDesignStep(0)
+
+    // Animate through design steps
+    const stepInterval = setInterval(() => {
+      setDesignStep(prev => {
+        if (prev >= designSteps.length - 1) {
+          clearInterval(stepInterval)
+          return prev
+        }
+        return prev + 1
+      })
+    }, 1000)
     
-    // Simulate autofill execution (in a real app, this would trigger the actual autofill)
+    // Simulate Canva AI processing and applying data
     setTimeout(() => {
+      clearInterval(stepInterval)
+      setIsDesigning(false)
+      
+      // Apply the data - replaces placeholders with actual values
+      if (onApplyComplete) {
+        onApplyComplete()
+      }
+      
       setMessages(prev => [...prev, {
         type: 'ai',
         text: "Your Employee Benefits Guide has been created! You can view it in the editor."
       }])
-    }, 1500)
+    }, 5000)
   }
 
   // Render chat view
@@ -213,6 +250,12 @@ export default function CanvaAIPanel({
               return null
             })}
             {isThinking && <ThinkingIndicator />}
+            {isDesigning && (
+              <div className="designing-indicator">
+                <span className="designing-label">Designing<span className="designing-dots"><span className="dot" /><span className="dot" /><span className="dot" /></span></span>
+                <span className="designing-step">{designSteps[designStep]}</span>
+              </div>
+            )}
           </MessageList>
         )}
       </div>

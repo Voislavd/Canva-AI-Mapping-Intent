@@ -17,6 +17,7 @@ export default function PageContainer({
   isMarketerMode = false,
   highlightedElementId,
   isApplied = false,
+  isInMappingMode = false,
   isDraggingField = false,
   dragOverElement,
   onElementDragOver,
@@ -93,8 +94,8 @@ export default function PageContainer({
         onDrop={(e) => canDrop && handleDrop(e, element.id)}
       >
         {children}
-        {/* Show mapped badge on top of element */}
-        {!isMarketerMode && isMapped && !isApplied && (
+        {/* Show mapped badge on top of element - only in mapping mode */}
+        {!isMarketerMode && isMapped && !isApplied && isInMappingMode && (
           <div className="element-mapping-badge">
             {getFieldLabel(mappings[element.id])}
             <span className="badge-icon-mini">
@@ -193,12 +194,12 @@ export default function PageContainer({
                   <div className="cover-company-section">
                     {companyElement ? (
                       <SelectableElement element={companyElement} className="cover-company-wrapper">
-                        <span className={`cover-company ${isApplied && mappings[companyElement.id] ? 'value-applied' : ''}`}>
-                          {getDisplayValue(companyElement, 'ABC Company')}
+                        <span className={`cover-company ${isApplied ? 'value-applied' : ''}`}>
+                          {isApplied ? 'Acme Corporation' : 'ABC Company'}
                         </span>
                       </SelectableElement>
                     ) : (
-                      <span className="cover-company">ABC Company</span>
+                      <span className="cover-company">{isApplied ? 'Acme Corporation' : 'ABC Company'}</span>
                     )}
                   </div>
 

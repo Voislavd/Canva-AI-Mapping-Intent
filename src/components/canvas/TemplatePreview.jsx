@@ -90,6 +90,7 @@ export default function TemplatePreview({
   isMarketerMode = false,
   highlightedElementId,
   isApplied = false,
+  isInMappingMode = false,
   isDraggingField = false,
   dragOverElement,
   onElementDragOver,
@@ -188,6 +189,7 @@ export default function TemplatePreview({
               isMarketerMode={isMarketerMode}
               highlightedElementId={highlightedElementId}
               isApplied={isApplied}
+              isInMappingMode={isInMappingMode}
               isDraggingField={isDraggingField}
               dragOverElement={dragOverElement}
               onElementDragOver={onElementDragOver}

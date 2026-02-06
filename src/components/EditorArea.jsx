@@ -18,6 +18,7 @@ export default function EditorArea({
   isMarketerMode = false,
   highlightedElementId,
   isApplied = false,
+  isInMappingMode = false,
   isDraggingField = false,
   onFieldDragEnd
 }) {
@@ -57,6 +58,7 @@ export default function EditorArea({
             isMarketerMode={isMarketerMode}
             highlightedElementId={highlightedElementId}
             isApplied={isApplied}
+            isInMappingMode={isInMappingMode}
             isDraggingField={isDraggingField}
             dragOverElement={dragOverElement}
             onElementDragOver={handleElementDragOver}

@@ -22,6 +22,7 @@ export default function App() {
   
   // Canva AI mapping state
   const [canvaAIMappingMode, setCanvaAIMappingMode] = useState(false)
+  const [canvaAIApplyingMode, setCanvaAIApplyingMode] = useState(false)
   
   // Drag and drop state
   const [isDraggingField, setIsDraggingField] = useState(false)
@@ -100,15 +101,31 @@ export default function App() {
     setCanvaAIMappingMode(false)
   }
 
+  // Handler for Canva AI starting apply mode (after save mapping)
+  const handleCanvaAIApplyStart = () => {
+    setCanvaAIMappingMode(false)  // Exit mapping mode (hides badges)
+    setCanvaAIApplyingMode(true)  // Enter applying mode (keeps preview visible)
+  }
+
+  // Handler for Canva AI completing apply
+  const handleCanvaAIApplyComplete = () => {
+    setIsApplied(true)  // Show actual values instead of placeholders
+  }
+
+  // Handler for Canva AI ending apply mode
+  const handleCanvaAIApplyEnd = () => {
+    setCanvaAIApplyingMode(false)
+  }
+
   // Panel type checks
   const isCanvaAIPanel = activePanel === 'canva-ai'
   const isAutofillPanel = activePanel === 'apps'
 
   // Show template preview for mappings, create-connect, and mapped-detail views
-  // Also show for Canva AI when in mapping mode
+  // Also show for Canva AI when in mapping mode or applying mode
   const showTemplatePreview = (
     (isAutofillPanel && (autofillView === 'mappings' || autofillView === 'create-connect' || autofillView === 'mapped-detail')) ||
-    (isCanvaAIPanel && canvaAIMappingMode)
+    (isCanvaAIPanel && (canvaAIMappingMode || canvaAIApplyingMode))
   ) && selectedTemplate
 
   return (
@@ -126,6 +143,10 @@ export default function App() {
             onClose={handleClosePanel}
             onMappingStart={handleCanvaAIMappingStart}
             onMappingEnd={handleCanvaAIMappingEnd}
+            onApplyStart={handleCanvaAIApplyStart}
+            onApplyComplete={handleCanvaAIApplyComplete}
+            onApplyEnd={handleCanvaAIApplyEnd}
+            isApplied={isApplied}
             mappings={mappings}
             onFieldMap={handleFieldMap}
             onFieldUnmap={handleFieldUnmap}
@@ -167,6 +188,7 @@ export default function App() {
         schema={SCHEMA}
         highlightedElementId={highlightedElementId}
         isApplied={isApplied}
+        isInMappingMode={canvaAIMappingMode}
         isDraggingField={isDraggingField}
         onFieldDragEnd={() => setIsDraggingField(false)}
       />
