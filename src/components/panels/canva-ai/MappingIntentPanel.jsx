@@ -171,7 +171,7 @@ export default function MappingIntentPanel({
           onClick={onSave}
           disabled={!hasMappings}
         >
-          Save matching
+          Autofill design
         </button>
       </div>
     </div>
