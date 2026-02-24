@@ -20,7 +20,8 @@ export default function App() {
   const [highlightedElementId, setHighlightedElementId] = useState(null)
   const [isApplied, setIsApplied] = useState(false)
   
-  // Canva AI mapping state
+  // Canva AI state
+  const [canvaAIPreviewMode, setCanvaAIPreviewMode] = useState(false)
   const [canvaAIMappingMode, setCanvaAIMappingMode] = useState(false)
   const [canvaAIApplyingMode, setCanvaAIApplyingMode] = useState(false)
   
@@ -86,10 +87,19 @@ export default function App() {
     setTimeout(() => setHighlightedElementId(null), 1500)
   }
 
+  // Handler for Canva AI showing template preview (before matching)
+  const handleCanvaAITemplatePreview = (template) => {
+    setSelectedTemplate(template)
+    setSelectedPageIndex(0)
+    setCanvaAIPreviewMode(true)
+    setMappings({})
+  }
+
   // Handler for Canva AI entering mapping mode
   const handleCanvaAIMappingStart = (template) => {
     setSelectedTemplate(template)
     setSelectedPageIndex(0)
+    setCanvaAIPreviewMode(false)
     setCanvaAIMappingMode(true)
     
     // Start with empty mappings - AI will populate them
@@ -125,7 +135,7 @@ export default function App() {
   // Also show for Canva AI when in mapping mode or applying mode
   const showTemplatePreview = (
     (isAutofillPanel && (autofillView === 'mappings' || autofillView === 'create-connect' || autofillView === 'mapped-detail')) ||
-    (isCanvaAIPanel && (canvaAIMappingMode || canvaAIApplyingMode))
+    (isCanvaAIPanel && (canvaAIPreviewMode || canvaAIMappingMode || canvaAIApplyingMode))
   ) && selectedTemplate
 
   return (
@@ -141,6 +151,7 @@ export default function App() {
         {isCanvaAIPanel ? (
           <CanvaAIPanel 
             onClose={handleClosePanel}
+            onTemplatePreview={handleCanvaAITemplatePreview}
             onMappingStart={handleCanvaAIMappingStart}
             onMappingEnd={handleCanvaAIMappingEnd}
             onApplyStart={handleCanvaAIApplyStart}

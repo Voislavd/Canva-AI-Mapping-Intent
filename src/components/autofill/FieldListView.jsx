@@ -173,6 +173,30 @@ export default function FieldListView({
         {item.sampleValue && (
           <span className="field-list-sample">{item.sampleValue}</span>
         )}
+        {item.fieldType === 'table' && item.columns && item.rows && (
+          <div className="field-table-preview">
+            <table>
+              <thead>
+                <tr>
+                  <th className="field-table-row-num"></th>
+                  {item.columns.slice(0, 3).map((col, i) => (
+                    <th key={i}>{col}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {item.rows.slice(0, 3).map((row, ri) => (
+                  <tr key={ri}>
+                    <td className="field-table-row-num">{ri + 1}</td>
+                    {row.slice(0, 3).map((cell, ci) => (
+                      <td key={ci}>{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     )
   }
@@ -210,7 +234,7 @@ export default function FieldListView({
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 3L10 17M10 3L6 7M10 3L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span>Drag and Drop to Map</span>
+          <span>Drag and drop to match</span>
         </div>
 
         {/* List */}
@@ -222,7 +246,7 @@ export default function FieldListView({
               {/* Unmapped Section */}
               {unmappedItems.length > 0 && (
                 <div className="field-list-section">
-                  <h4 className="field-list-section-title">Unmapped</h4>
+                  <h4 className="field-list-section-title">Unmatched</h4>
                   {unmappedItems.map(item => renderFieldItem(item, false))}
                 </div>
               )}
@@ -230,7 +254,7 @@ export default function FieldListView({
               {/* Mapped Section */}
               {mappedItems.length > 0 && (
                 <div className="field-list-section">
-                  <h4 className="field-list-section-title">Mapped</h4>
+                  <h4 className="field-list-section-title">Matched</h4>
                   {mappedItems.map(item => renderFieldItem(item, true))}
                 </div>
               )}

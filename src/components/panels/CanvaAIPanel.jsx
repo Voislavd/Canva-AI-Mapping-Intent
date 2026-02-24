@@ -4,11 +4,12 @@ import brandThumbnail from '../../assets/icons/brand-thumbnail.png'
 import recentThumbnail from '../../assets/icons/start-recent-thumbnail.png'
 import chartThumbnail from '../../assets/icons/chart-thumbnail.png'
 import micIcon from '../../assets/icons/mic-icon.png'
-import { TEMPLATES, SCHEMA } from '../../data/sampleData'
+import { TEMPLATES, SCHEMA, DATA_SOURCES } from '../../data/sampleData'
 import { MessageList, UserMessage, AIMessage, ThinkingIndicator, TemplateCard, MappingIntentPanel, MatchFieldsCard } from './canva-ai'
 
 export default function CanvaAIPanel({ 
-  onClose, 
+  onClose,
+  onTemplatePreview,
   onMappingStart, 
   onMappingEnd,
   onApplyStart,
@@ -74,11 +75,17 @@ export default function CanvaAIPanel({
       const suggestedTemplate = TEMPLATES.find(t => t.title === 'Employee Benefits Guide')
       setSelectedTemplate(suggestedTemplate)
       
-      // Add AI response with template card
+      const matchedDataSource = DATA_SOURCES.find(s => s.connected)
+
+      if (onTemplatePreview && suggestedTemplate) {
+        onTemplatePreview(suggestedTemplate)
+      }
+
       setMessages(prev => [...prev, {
         type: 'ai',
-        text: "I found your brand template. There are two ways I can help:",
-        template: suggestedTemplate
+        text: "I found your brand template and matched it with your data.",
+        template: suggestedTemplate,
+        dataSource: matchedDataSource
       }])
     }, 1500)
   }
@@ -305,7 +312,8 @@ export default function CanvaAIPanel({
                   <AIMessage key={index} text={msg.text}>
                     {msg.template && (
                       <TemplateCard 
-                        template={msg.template} 
+                        template={msg.template}
+                        dataSource={msg.dataSource}
                         onMapTemplate={handleMapTemplate}
                         onGenerateWithAI={handleGenerateWithAI}
                       />

@@ -134,12 +134,12 @@ export default function MappingsPanel({
       {/* Show Mapped Fields when in click-to-map mode */}
       {isClickToMapMode && (
         <div className="mapped-fields-section">
-          <h4 className="section-label">Mapped fields (Page {selectedPageIndex + 1})</h4>
+          <h4 className="section-label">Matched fields (Page {selectedPageIndex + 1})</h4>
 
           {mappedFields.length === 0 ? (
             <div className="click-to-map-hint">
               <span className="info-icon">ℹ</span>
-              <span>Click on an element to map it</span>
+              <span>Click on an element to match it</span>
             </div>
           ) : (
             <MappedFieldsList

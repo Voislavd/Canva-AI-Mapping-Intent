@@ -5,18 +5,88 @@
   gap: 16px;
 }
 
-.template-card-preview {
-  width: 140px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba(57, 76, 96, 0.15);
-  background: #f5f5f5;
+.template-card-context {
+  display: flex;
+  gap: 8px;
+  width: 100%;
 }
 
-.template-card-image {
+.context-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #f0f0f0;
+  min-width: 0;
+}
+
+.context-card-square {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.context-card-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+  background: #2E7D32;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  line-height: 1.3;
+  z-index: 1;
+}
+
+.context-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+}
+
+.context-card-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: white;
+  color: var(--text-secondary);
+}
+
+.context-card-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.template-card-divider-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin: 0;
 }
 
 .template-card-options {
